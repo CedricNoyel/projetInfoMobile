@@ -29,7 +29,7 @@ const SessionsListPage: React.FC = () => {
       <Header title="Sessions" />
       <IonContent>
         {!isLoaded ? (
-          <IonTitle>Loading...</IonTitle>
+          <IonTitle>Chargement...</IonTitle>
         ) : (
           <IonList>
             {sessionsList.map((session, idx) => (
