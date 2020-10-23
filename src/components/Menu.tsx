@@ -11,6 +11,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { ROUTES } from "../constants/routes";
+import { settings, megaphone, home } from "ionicons/icons";
 
 export const Menu = () => {
   return (
@@ -23,12 +24,12 @@ export const Menu = () => {
       <IonContent>
         <IonList>
           <IonItem routerLink={ROUTES.ANNOUNCERS}>
-            <IonIcon name="mail" slot="start"></IonIcon>
+            <IonIcon icon={megaphone} slot="start" />
             <IonLabel>Présentateurs</IonLabel>
           </IonItem>
 
           <IonItem routerLink={ROUTES.SETTINGS}>
-            <IonIcon name="settings" slot="start"></IonIcon>
+            <IonIcon icon={settings} slot="start" />
             <IonLabel>Paramètres</IonLabel>
           </IonItem>
         </IonList>
