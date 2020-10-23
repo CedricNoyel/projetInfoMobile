@@ -16,7 +16,7 @@ import {
   IonItem,
   IonPage,
   IonRow,
-  IonThumbnail,
+  IonAvatar,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -112,8 +112,9 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
                         <IonItem
                           key={speaker.id}
                           routerLink={`/speaker/${speaker.id}`}
+                          lines="none"
                         >
-                          <IonThumbnail className="speakerImg">
+                          <IonAvatar className="speakerImg">
                             {!!speaker.photoUrl ? (
                               <img src={IMAGE_BASE_URL + speaker.photoUrl} />
                             ) : (
@@ -123,7 +124,7 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
                                 />
                               )
                             )}
-                          </IonThumbnail>
+                          </IonAvatar>
                           <p>{speaker.name}</p>
                         </IonItem>
                       ))}

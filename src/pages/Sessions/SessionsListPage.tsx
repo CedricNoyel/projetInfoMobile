@@ -1,15 +1,11 @@
 import {
-  IonBackButton,
-  IonButtons,
   IonContent,
-  IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
   IonList,
   IonPage,
   IonTitle,
-  IonToolbar,
 } from "@ionic/react";
 import { chevronForwardOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
