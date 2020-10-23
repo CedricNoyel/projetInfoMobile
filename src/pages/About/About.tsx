@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid, IonRow, IonCol } from '@ionic/react';
-import './Settings.css';
+import './About.css';
 import { Device } from '@ionic-native/device';
 import { Network } from '@ionic-native/network';
 
@@ -23,13 +23,13 @@ const Settings: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Paramètres</IonTitle>
+          <IonTitle>Informations du téléphone</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Paramètres</IonTitle>
+            <IonTitle size="large">Téléphone</IonTitle>
           </IonToolbar>
         </IonHeader>
 
