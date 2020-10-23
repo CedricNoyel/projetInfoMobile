@@ -1,0 +1,15 @@
+.speakerName {
+  margin-left: 1em;
+}
+
+.SpeakerDetailPhoto {
+  margin: 2em auto 2em auto;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+  display: flex;
+}
+
+.center-text {
+  text-align: center;
+}

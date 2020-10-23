@@ -80,8 +80,10 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
               <IonImg src={IMAGE_BASE_URL + sessionData.image}></IonImg>
             )}
             <IonCardHeader>
-              <IonCardTitle>{sessionData?.title}</IonCardTitle>
-              <IonCardSubtitle>
+              <IonCardTitle className={"center-text"}>
+                {sessionData?.title}
+              </IonCardTitle>
+              <IonCardSubtitle className={"center-text"}>
                 {sessionData?.tags && sessionData.tags.map((tag) => tag)}
               </IonCardSubtitle>
             </IonCardHeader>
@@ -89,14 +91,14 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
               <IonGrid>
                 <IonRow>
                   <IonCol>
-                    <IonTitle>Contenu :</IonTitle>
+                    <IonTitle className={"center-text"}>Contenu :</IonTitle>
                     <p>{sessionData?.description}</p>
                   </IonCol>
                 </IonRow>
 
                 <IonRow>
                   <IonCol>
-                    <IonTitle>Speakers :</IonTitle>
+                    <IonTitle className={"center-text"}>Speakers :</IonTitle>
                     <div style={{ marginTop: "6px" }}>
                       {speakers?.map((speaker) => (
                         <IonItem key={speaker.id}>
