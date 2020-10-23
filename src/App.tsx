@@ -30,6 +30,7 @@ import Home from "./pages/Home/Home";
 import Notes from "./pages/Notes/Notes";
 import Sessions from "./pages/Sessions/Sessions";
 import Announcers from "./pages/Announcers/Announcers";
+import Settings from "./pages/settings/Settings";
 
 /* Core CSS required for Ionic components to work properly */
 /* Basic CSS for apps built with Ionic */
@@ -45,6 +46,7 @@ const App: React.FC = () => (
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.NOTES} component={Notes} />
           <Route path={ROUTES.ANNOUNCERS} component={Announcers} />
+          <Route path={ROUTES.SETTINGS} component={Settings} />
           <Route
             path={ROUTES.DEFAULT}
             render={() => <Redirect to={ROUTES.HOME} />}
