@@ -32,10 +32,10 @@ const SpeakersListPage: React.FC = () => {
 
   return (
     <IonPage>
-      <Header title="Sessions" />
+      <Header title="Présentateurs" />
       <IonContent>
         {!isLoaded ? (
-          <IonTitle>Loading...</IonTitle>
+          <IonTitle>Chargement...</IonTitle>
         ) : (
           <IonList>
             {speakersList.map((speaker) => (

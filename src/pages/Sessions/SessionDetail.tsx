@@ -81,7 +81,7 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
       </IonHeader>
       <IonContent>
         {!isLoaded ? (
-          <IonTitle>Loading...</IonTitle>
+          <IonTitle>Chargement...</IonTitle>
         ) : (
           <IonCard>
             {sessionData?.image && (
@@ -104,7 +104,7 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
 
                 <IonRow>
                   <IonCol>
-                    <IonTitle>Speakers :</IonTitle>
+                    <IonTitle>Présentateurs :</IonTitle>
                     <div style={{ marginTop: "6px" }}>
                       {speakers?.map((speaker) => (
                         <IonItem

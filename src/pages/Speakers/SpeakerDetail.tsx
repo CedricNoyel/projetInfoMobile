@@ -73,12 +73,12 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
               <IonIcon icon={arrowBackOutline} />
             </IonButton>
           </IonButtons>
-          <IonTitle>Speakers</IonTitle>
+          <IonTitle>Présentateurs</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         {!isLoaded ? (
-          <IonTitle>Loading...</IonTitle>
+          <IonTitle>Chargement...</IonTitle>
         ) : (
           <IonCard>
             <IonCardHeader>
