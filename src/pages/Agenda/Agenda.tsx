@@ -3,7 +3,7 @@ import React from "react";
 
 import { Header } from "../../components/Header";
 
-const Announcers: React.FC = () => {
+const AgendaPage: React.FC = () => {
   return (
     <IonPage>
       <Header title="Présentateurs" />
@@ -11,4 +11,4 @@ const Announcers: React.FC = () => {
   );
 };
 
-export default Announcers;
+export default AgendaPage;
