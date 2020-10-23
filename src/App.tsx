@@ -31,7 +31,6 @@ import { Menu } from "./components/Menu";
 import { ROUTES } from "./constants/routes";
 import Home from "./pages/Home/Home";
 import Notes from "./pages/Notes/Notes";
-import Announcers from "./pages/Announcers/Announcers";
 import About from "./pages/About/About";
 import Agenda from "./pages/Agenda/Agenda";
 
@@ -53,6 +52,8 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import SessionsListPage from "./pages/Sessions/SessionsListPage";
 import SessionDetailPage from "./pages/Sessions/SessionDetail";
+import SpeakersListPage from "./pages/Speakers/SpeakersListPage";
+import SpeakerDetailPage from "./pages/Speakers/SpeakerDetail";
 
 /* Optional CSS utils that can be commented out */
 /* Theme variables */
@@ -62,10 +63,11 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet id="main">
-          <Route path={ROUTES.SESSIONS} component={SessionsListPage} exact />
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.NOTES} component={Notes} />
-          <Route path={ROUTES.ANNOUNCERS} component={Announcers} />
+          <Route path={ROUTES.SPEAKERS} component={SpeakersListPage} exact />
+          <Route path={ROUTES.SPEAKER} component={SpeakerDetailPage} exact />
+          <Route path={ROUTES.SESSIONS} component={SessionsListPage} exact />
           <Route path={ROUTES.SESSION} component={SessionDetailPage} exact />
           <Route path={ROUTES.AGENDA} component={Agenda} />
           <Route path={ROUTES.ABOUT} component={About} />

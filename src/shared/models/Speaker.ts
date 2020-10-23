@@ -9,4 +9,5 @@ export interface Speaker {
   companyLogo?: string;
   country?: string;
   photoUrl?: string;
+  bio?: string;
 }

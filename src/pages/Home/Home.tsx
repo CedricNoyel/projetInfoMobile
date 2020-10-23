@@ -12,6 +12,7 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { Header } from "../../components/Header";
+import { ROUTES } from "../../constants/routes";
 
 // import ExploreContainer from "../components/ExploreContainer";
 const logoUrl: string = "assets/images/imt_atlantique_logo.png";
@@ -35,12 +36,12 @@ const Home: React.FC = () => {
           <p>du 23/10/2018 au 27/10/2018</p>
 
           <div className={"spacingTop"}>
-            <IonButton routerLink="/sessions" color="light">
+            <IonButton routerLink={ROUTES.SESSIONS} color="light">
               Voir les conférences
             </IonButton>
           </div>
           <div className={"spacingTop"}>
-            <IonButton routerLink="/presentateurs" color="light">
+            <IonButton routerLink={ROUTES.SPEAKERS} color="light">
               Voir les présentateurs
             </IonButton>
           </div>

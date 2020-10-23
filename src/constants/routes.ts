@@ -6,6 +6,7 @@ export const ROUTES = {
     SETTINGS: "/settings",
     ABOUT: "/about",
     NOTES: "/notes",
-    ANNOUNCERS: "/announcers",
+    SPEAKERS: "/speakers",
+    SPEAKER: "/speaker/:id",
     AGENDA: "/agenda"
 };

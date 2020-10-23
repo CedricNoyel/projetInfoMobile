@@ -23,7 +23,7 @@ export const Menu = () => {
       </IonHeader>
       <IonContent>
         <IonList>
-          <IonItem routerLink={ROUTES.ANNOUNCERS}>
+          <IonItem routerLink={ROUTES.SPEAKERS}>
             <IonIcon icon={people} slot="start" />
             <IonLabel>Présentateurs</IonLabel>
           </IonItem>
