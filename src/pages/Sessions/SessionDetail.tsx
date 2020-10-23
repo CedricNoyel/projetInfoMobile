@@ -13,7 +13,7 @@ import {
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
-import { Session, SessionsListDTO } from "../shared/models/Session";
+import { Session, SessionsListDTO } from "../../shared/models/Session";
 
 const IMAGE_BASE_URL = "https://devfest2018.gdgnantes.com/";
 

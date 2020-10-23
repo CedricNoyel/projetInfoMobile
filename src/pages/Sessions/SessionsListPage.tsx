@@ -13,7 +13,7 @@ import {
 } from "@ionic/react";
 import { chevronForwardOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
-import { Session, SessionsListDTO } from "../shared/models/Session";
+import { Session, SessionsListDTO } from "../../shared/models/Session";
 
 const SessionsListPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
