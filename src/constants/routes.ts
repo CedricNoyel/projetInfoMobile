@@ -2,7 +2,8 @@ export const ROUTES = {
     DEFAULT: "/",
     HOME: "/home",
     SESSIONS: "/sessions",
-    SETTINGS: "/settings",
+    ABOUT: "/about",
     NOTES: "/notes",
     ANNOUNCERS: "/announcers",
+    AGENDA: "/agenda"
 };

@@ -16,8 +16,8 @@ export const Header = (props: HeaderProps) => {
     <IonHeader>
       <IonToolbar>
         <IonTitle>{props.title}</IonTitle>
-        <IonButton slot="start">
-          <IonMenuButton></IonMenuButton>
+        <IonButton slot="start" fill="clear" color="black">
+          <IonMenuButton color="dark"></IonMenuButton>
         </IonButton>
       </IonToolbar>
     </IonHeader>
