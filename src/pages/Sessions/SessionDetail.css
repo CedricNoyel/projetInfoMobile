@@ -3,7 +3,10 @@
   height: 50px;
   margin: 5px;
 }
-
 .center-text {
   text-align: center;
+}
+
+.back-button-custom ion-icon {
+  font-size: 24px;
 }

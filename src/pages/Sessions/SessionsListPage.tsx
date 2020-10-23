@@ -13,6 +13,7 @@ import {
 } from "@ionic/react";
 import { chevronForwardOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
+import { Header } from "../../components/Header";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
 import { DevFestData } from "../../shared/utils/DevFestData";
 
@@ -29,14 +30,7 @@ const SessionsListPage: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton />
-          </IonButtons>
-          <IonTitle>Sessions</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header title="Sessions" />
       <IonContent>
         {!isLoaded ? (
           <IonTitle>Loading...</IonTitle>

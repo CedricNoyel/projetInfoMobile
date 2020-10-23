@@ -1,27 +1,29 @@
 /* eslint-disable jsx-a11y/alt-text */
 import {
-  IonBackButton,
+  IonButton,
   IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonCol,
   IonContent,
+  IonGrid,
   IonHeader,
+  IonIcon,
   IonImg,
   IonItem,
-  IonLabel,
   IonPage,
-  IonGrid,
   IonRow,
-  IonCol,
   IonThumbnail,
   IonTitle,
   IonToolbar,
-  IonCardTitle,
-  IonCardSubtitle,
 } from "@ionic/react";
+import { arrowBackOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
+import { ROUTES } from "../../constants/routes";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
@@ -66,8 +68,14 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/sessions" />
+            <IonButton
+              routerLink={ROUTES.SESSIONS}
+              className="back-button-custom"
+            >
+              <IonIcon icon={arrowBackOutline} />
+            </IonButton>
           </IonButtons>
+
           <IonTitle>Sessions</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -101,7 +109,10 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
                     <IonTitle className={"center-text"}>Speakers :</IonTitle>
                     <div style={{ marginTop: "6px" }}>
                       {speakers?.map((speaker) => (
-                        <IonItem key={speaker.id}>
+                        <IonItem
+                          key={speaker.id}
+                          routerLink={`/speaker/${speaker.id}`}
+                        >
                           <IonThumbnail className="speakerImg">
                             {!!speaker.photoUrl ? (
                               <img src={IMAGE_BASE_URL + speaker.photoUrl} />
