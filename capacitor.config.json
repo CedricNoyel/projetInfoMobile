@@ -1,9 +1,9 @@
 {
-  "appId": "com.imt.my.app",
-  "appName": "My App",
-  "bundledWebRuntime": false,
+  "appId": "com.imt.devfest.conferences",
+  "appName": "DevFest Conferences",
+  "bundledWebRuntime": true,
   "npmClient": "npm",
-  "webDir": "public",
+  "webDir": "build",
   "linuxAndroidStudioPath": "/home/rouph/android-studio/bin/studio.sh",
   "plugins": {
     "SplashScreen": {
