@@ -1,9 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import {
-  IonBackButton,
-  IonButtons,
   IonContent,
-  IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
@@ -11,9 +8,8 @@ import {
   IonPage,
   IonAvatar,
   IonTitle,
-  IonToolbar,
 } from "@ionic/react";
-import { chevronForwardOutline, handRight } from "ionicons/icons";
+import { chevronForwardOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";

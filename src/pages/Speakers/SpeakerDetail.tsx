@@ -8,7 +8,6 @@ import {
   IonContent,
   IonHeader,
   IonIcon,
-  IonImg,
   IonItem,
   IonCardTitle,
   IonPage,
@@ -96,7 +95,7 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
                 {speakerData?.name}
               </IonCardTitle>
               <IonCardSubtitle className={"center-text"}>
-                {speakerData?.country}
+                {"Pays: " + speakerData?.country}
               </IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent>
@@ -113,7 +112,11 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
                     <IonTitle className={"center-text"}>Conférences :</IonTitle>
                     <div style={{ marginTop: "6px" }}>
                       {sessions?.map((session) => (
-                        <IonItem key={session.id}>
+                        <IonItem
+                          key={session.id}
+                          lines="none"
+                          routerLink={`/session/${session.id}`}
+                        >
                           <p>{session.title}</p>
                         </IonItem>
                       ))}
