@@ -80,7 +80,7 @@ const App: React.FC = () => (
         <IonTabBar slot="bottom">
           <IonTabButton tab="sessions" href={ROUTES.SESSIONS}>
             <IonIcon icon={desktopOutline} />
-            <IonLabel>Conférences</IonLabel>
+            <IonLabel>Sessions</IonLabel>
           </IonTabButton>
           <IonTabButton tab="home" href={ROUTES.HOME}>
             <IonIcon icon={home} />

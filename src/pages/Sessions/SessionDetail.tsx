@@ -11,16 +11,21 @@ import {
   IonItem,
   IonLabel,
   IonPage,
-  IonText,
+  IonGrid,
+  IonRow,
+  IonCol,
   IonThumbnail,
   IonTitle,
   IonToolbar,
+  IonCardTitle,
+  IonCardSubtitle,
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
+import "./SessionDetail.css";
 
 interface SessionPageProps
   extends RouteComponentProps<{
@@ -71,35 +76,48 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
           <IonTitle>Loading...</IonTitle>
         ) : (
           <IonCard>
+            {sessionData?.image && (
+              <IonImg src={IMAGE_BASE_URL + sessionData.image}></IonImg>
+            )}
             <IonCardHeader>
-              <IonTitle>
-                <div className="ion-text-wrap">{sessionData?.title}</div>
-              </IonTitle>
+              <IonCardTitle>{sessionData?.title}</IonCardTitle>
+              <IonCardSubtitle>
+                {sessionData?.tags && sessionData.tags.map((tag) => tag)}
+              </IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent>
-              {!!sessionData?.image && (
-                <IonImg src={IMAGE_BASE_URL + sessionData.image}></IonImg>
-              )}
-              <IonText>{sessionData?.description}</IonText>
-              {!!speakers && (
-                <div>
-                  Speakers :
-                  {speakers.map((speaker) => (
-                    <IonItem key={speaker.id}>
-                      <IonThumbnail>
-                        {!!speaker.photoUrl ? (
-                          <img src={IMAGE_BASE_URL + speaker.photoUrl} />
-                        ) : (
-                          !!speaker.companyLogo && (
-                            <img src={IMAGE_BASE_URL + speaker.companyLogo} />
-                          )
-                        )}
-                      </IonThumbnail>
-                      <IonLabel>{speaker.name}</IonLabel>
-                    </IonItem>
-                  ))}
-                </div>
-              )}
+              <IonGrid>
+                <IonRow>
+                  <IonCol>
+                    <IonTitle>Contenu :</IonTitle>
+                    <p>{sessionData?.description}</p>
+                  </IonCol>
+                </IonRow>
+
+                <IonRow>
+                  <IonCol>
+                    <IonTitle>Speakers :</IonTitle>
+                    <div style={{ marginTop: "6px" }}>
+                      {speakers?.map((speaker) => (
+                        <IonItem key={speaker.id}>
+                          <IonThumbnail className="speakerImg">
+                            {!!speaker.photoUrl ? (
+                              <img src={IMAGE_BASE_URL + speaker.photoUrl} />
+                            ) : (
+                              !!speaker.companyLogo && (
+                                <img
+                                  src={IMAGE_BASE_URL + speaker.companyLogo}
+                                />
+                              )
+                            )}
+                          </IonThumbnail>
+                          <p>{speaker.name}</p>
+                        </IonItem>
+                      ))}
+                    </div>
+                  </IonCol>
+                </IonRow>
+              </IonGrid>
             </IonCardContent>
           </IonCard>
         )}

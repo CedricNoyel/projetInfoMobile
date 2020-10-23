@@ -42,9 +42,9 @@ const SessionsListPage: React.FC = () => {
           <IonTitle>Loading...</IonTitle>
         ) : (
           <IonList>
-            {sessionsList.map((session) => (
+            {sessionsList.map((session, idx) => (
               <IonItem key={session.id} routerLink={`/session/${session.id}`}>
-                <IonLabel>{session.title}</IonLabel>
+                <IonLabel>{idx + " - " + session.title}</IonLabel>
                 <IonIcon icon={chevronForwardOutline} slot="end"></IonIcon>
               </IonItem>
             ))}
