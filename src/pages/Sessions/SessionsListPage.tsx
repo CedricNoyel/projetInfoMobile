@@ -14,19 +14,18 @@ import {
 import { chevronForwardOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
+import { DevFestData } from "../../shared/utils/DevFestData";
 
 const SessionsListPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [sessionsList, setSessionsList] = useState<Session[]>([]);
 
   useEffect(() => {
-    fetch("https://devfest-nantes-2018-api.cleverapps.io/sessions")
-      .then((res) => res.json())
-      .then((result: SessionsListDTO) => {
-        setSessionsList(Object.values(result));
-        setIsLoaded(true);
-      });
-  });
+    DevFestData.getSessionsList().then((result: SessionsListDTO) => {
+      setSessionsList(Object.values(result));
+      setIsLoaded(true);
+    });
+  }, []);
 
   return (
     <IonPage>

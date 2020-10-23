@@ -14,6 +14,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
+import { DevFestData } from "../../shared/utils/DevFestData";
 
 const IMAGE_BASE_URL = "https://devfest2018.gdgnantes.com/";
 
@@ -27,12 +28,10 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
   const [sessionData, setSessionData] = useState<Session>();
 
   useEffect(() => {
-    fetch("https://devfest-nantes-2018-api.cleverapps.io/sessions")
-      .then((res) => res.json())
-      .then((result: SessionsListDTO) => {
-        setSessionData(result[match.params.id]);
-        setIsLoaded(true);
-      });
+    DevFestData.getSessionsList().then((result: SessionsListDTO) => {
+      setSessionData(result[match.params.id]);
+      setIsLoaded(true);
+    });
   }, [match.params.id]);
 
   return (
