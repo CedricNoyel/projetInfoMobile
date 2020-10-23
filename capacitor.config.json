@@ -1,1 +1,14 @@
-{}
+{
+  "appId": "com.imt.my.app",
+  "appName": "My App",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "public",
+  "linuxAndroidStudioPath": "/home/rouph/android-studio/bin/studio.sh",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
