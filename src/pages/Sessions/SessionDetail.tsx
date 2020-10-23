@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import {
   IonBackButton,
   IonButtons,
@@ -7,7 +8,11 @@ import {
   IonContent,
   IonHeader,
   IonImg,
+  IonItem,
+  IonLabel,
   IonPage,
+  IonText,
+  IonThumbnail,
   IonTitle,
   IonToolbar,
   IonCardTitle,
@@ -16,9 +21,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
-import { DevFestData } from "../../shared/utils/DevFestData";
-
-const IMAGE_BASE_URL = "https://devfest2018.gdgnantes.com/";
+import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
+import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
 
 interface SessionPageProps
   extends RouteComponentProps<{
@@ -28,13 +32,31 @@ interface SessionPageProps
 const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [sessionData, setSessionData] = useState<Session>();
+  const [speakers, setSpeakers] = useState<Speaker[]>();
 
   useEffect(() => {
-    DevFestData.getSessionsList().then((result: SessionsListDTO) => {
-      setSessionData(result[match.params.id]);
+    const dataPromises: [Promise<SessionsListDTO>, Promise<SpeakersListDTO>] = [
+      DevFestData.getSessionsList(),
+      DevFestData.getSpeakersList(),
+    ];
+
+    Promise.all(dataPromises).then(([sessionsDTO, speakersDTO]) => {
+      const sessionData = sessionsDTO[match.params.id];
+      setSessionData(sessionData);
+
+      if (!!sessionData?.speakers) {
+        setSpeakers(
+          Object.values(sessionData.speakers).map(
+            (speakerId) => speakersDTO[speakerId]
+          )
+        );
+      }
+
       setIsLoaded(true);
       console.log(result)
     });
+
+    DevFestData.getSessionsList().then((result: SessionsListDTO) => {});
   }, [match.params.id]);
 
   return (
@@ -62,6 +84,25 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
             </IonCardHeader>
             <IonCardContent>
               {sessionData?.description}
+              {!!speakers && (
+                <div>
+                  Speakers :
+                  {speakers.map((speaker) => (
+                    <IonItem key={speaker.id}>
+                      <IonThumbnail>
+                        {!!speaker.photoUrl ? (
+                          <img src={IMAGE_BASE_URL + speaker.photoUrl} />
+                        ) : (
+                          !!speaker.companyLogo && (
+                            <img src={IMAGE_BASE_URL + speaker.companyLogo} />
+                          )
+                        )}
+                      </IonThumbnail>
+                      <IonLabel>{speaker.name}</IonLabel>
+                    </IonItem>
+                  ))}
+                </div>
+              )}
             </IonCardContent>
           </IonCard>
         )}
