@@ -36,25 +36,25 @@ const Settings: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol>
-            <p>Plateforme: {Device.platform.toString()}</p>
+            <p>Plateforme: {Device.platform}</p>
             </IonCol>
           </IonRow>
 
           <IonRow>
             <IonCol>
-            <p>Version: {Device.version.toString()}</p>
+            <p>Version: {Device.version}</p>
             </IonCol>
           </IonRow>
 
           <IonRow>
             <IonCol>
-            <p>Modèle: {Device.model.toString()}</p>
+            <p>Modèle: {Device.model}</p>
             </IonCol>
           </IonRow>
 
           <IonRow>
             <IonCol>
-            <p>Connexion: {connection.toString()}</p>
+            <p>Connexion: {connection}</p>
             </IonCol>
           </IonRow>
 
