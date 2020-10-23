@@ -1,5 +1,15 @@
-import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import "./theme/variables.css";
+import "@ionic/react/css/core.css";
+import "@ionic/react/css/display.css";
+import "@ionic/react/css/flex-utils.css";
+import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/normalize.css";
+import "@ionic/react/css/padding.css";
+import "@ionic/react/css/structure.css";
+import "@ionic/react/css/text-alignment.css";
+import "@ionic/react/css/text-transformation.css";
+import "@ionic/react/css/typography.css";
+
 import {
   IonApp,
   IonIcon,
@@ -7,53 +17,50 @@ import {
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
-  IonTabs
-} from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import { triangle, home, receiptOutline, desktopOutline } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+  IonTabs,
+} from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+import { desktopOutline, home, receiptOutline } from "ionicons/icons";
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+
+import { Menu } from "./components/Menu";
+import { ROUTES } from "./constants/routes";
+import Home from "./pages/Home/Home";
+import Notes from "./pages/Notes/Notes";
+import Sessions from "./pages/Sessions/Sessions";
+import Announcers from "./pages/Announcers/Announcers";
 
 /* Core CSS required for Ionic components to work properly */
-import '@ionic/react/css/core.css';
-
 /* Basic CSS for apps built with Ionic */
-import '@ionic/react/css/normalize.css';
-import '@ionic/react/css/structure.css';
-import '@ionic/react/css/typography.css';
-
 /* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css';
-import '@ionic/react/css/float-elements.css';
-import '@ionic/react/css/text-alignment.css';
-import '@ionic/react/css/text-transformation.css';
-import '@ionic/react/css/flex-utils.css';
-import '@ionic/react/css/display.css';
-
 /* Theme variables */
-import './theme/variables.css';
-
 const App: React.FC = () => (
   <IonApp>
+    <Menu />
     <IonReactRouter>
       <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/tab2" />} exact={true} />
+        <IonRouterOutlet id="main">
+          <Route path={ROUTES.SESSIONS} component={Sessions} exact />
+          <Route path={ROUTES.HOME} component={Home} />
+          <Route path={ROUTES.NOTES} component={Notes} />
+          <Route path={ROUTES.ANNOUNCERS} component={Announcers} />
+          <Route
+            path={ROUTES.DEFAULT}
+            render={() => <Redirect to={ROUTES.HOME} />}
+            exact
+          />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
+          <IonTabButton tab="sessions" href={ROUTES.SESSIONS}>
             <IonIcon icon={desktopOutline} />
             <IonLabel>Conférences</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
+          <IonTabButton tab="home" href={ROUTES.HOME}>
             <IonIcon icon={home} />
             <IonLabel>Accueil</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="notes" href={ROUTES.NOTES}>
             <IonIcon icon={receiptOutline} />
             <IonLabel>Mes notes</IonLabel>
           </IonTabButton>
