@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import {
-  IonBackButton,
+  IonButton,
   IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonContent,
   IonHeader,
+  IonIcon,
   IonImg,
   IonItem,
   IonLabel,
@@ -15,11 +16,14 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import { arrowBackOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
+import { ROUTES } from "../../constants/routes";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
+import "./SpeakerDetail.css";
 
 interface SpeakerPageProps
   extends RouteComponentProps<{
@@ -41,12 +45,15 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
       const speakerData = speakersDTO[match.params.id];
       setSpeakerData(speakerData);
 
-      setSessions(
-        Object.values(sessionsDTO).filter(
-          (session) =>
-            !!session.speakers && session.speakers.includes(speakerData.id)
-        )
+      const speakerSessions = Object.values(sessionsDTO).filter(
+        (session) =>
+          !!session.speakers &&
+          session.speakers
+            .map((speakerId) => speakerId.toString())
+            .includes(speakerData.id.toString())
       );
+
+      setSessions(speakerSessions);
 
       setIsLoaded(true);
     });
@@ -59,7 +66,12 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/speakers" />
+            <IonButton
+              routerLink={ROUTES.SPEAKERS}
+              className="back-button-custom"
+            >
+              <IonIcon icon={arrowBackOutline} />
+            </IonButton>
           </IonButtons>
           <IonTitle>Speakers</IonTitle>
         </IonToolbar>
@@ -87,7 +99,10 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
                 <div>
                   Sessions :
                   {sessions.map((session) => (
-                    <IonItem key={session.id}>
+                    <IonItem
+                      key={session.id}
+                      routerLink={"/session/" + session.id}
+                    >
                       <IonLabel>{session.title}</IonLabel>
                     </IonItem>
                   ))}

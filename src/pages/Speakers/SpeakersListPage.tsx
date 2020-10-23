@@ -15,6 +15,7 @@ import {
 } from "@ionic/react";
 import { chevronForwardOutline } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
+import { Header } from "../../components/Header";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
 
@@ -31,14 +32,7 @@ const SpeakersListPage: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonBackButton />
-          </IonButtons>
-          <IonTitle>Speakers</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header title="Sessions" />
       <IonContent>
         {!isLoaded ? (
           <IonTitle>Loading...</IonTitle>
