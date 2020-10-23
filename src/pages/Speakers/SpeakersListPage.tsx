@@ -9,15 +9,16 @@ import {
   IonLabel,
   IonList,
   IonPage,
-  IonThumbnail,
+  IonAvatar,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { chevronForwardOutline } from "ionicons/icons";
+import { chevronForwardOutline, handRight } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
+import "./Speaker.css";
 
 const SpeakersListPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -40,7 +41,7 @@ const SpeakersListPage: React.FC = () => {
           <IonList>
             {speakersList.map((speaker) => (
               <IonItem key={speaker.id} routerLink={`/speaker/${speaker.id}`}>
-                <IonThumbnail>
+                <IonAvatar>
                   {!!speaker.photoUrl ? (
                     <img src={IMAGE_BASE_URL + speaker.photoUrl} />
                   ) : (
@@ -48,8 +49,8 @@ const SpeakersListPage: React.FC = () => {
                       <img src={IMAGE_BASE_URL + speaker.companyLogo} />
                     )
                   )}
-                </IonThumbnail>
-                <IonLabel>{speaker.name}</IonLabel>
+                </IonAvatar>
+                <IonLabel className={"speakerName"}>{speaker.name}</IonLabel>
                 <IonIcon icon={chevronForwardOutline} slot="end"></IonIcon>
               </IonItem>
             ))}
