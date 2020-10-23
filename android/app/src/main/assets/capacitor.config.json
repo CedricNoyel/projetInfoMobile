@@ -1,9 +1,10 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "myApp",
+  "appId": "com.imt.my.app",
+  "appName": "My App",
   "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "public",
+  "webDir": "build",
+  "linuxAndroidStudioPath": "/home/rouph/android-studio/bin/studio.sh",
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
