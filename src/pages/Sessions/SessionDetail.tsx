@@ -10,6 +10,8 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonCardTitle,
+  IonCardSubtitle
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
@@ -31,6 +33,7 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
     DevFestData.getSessionsList().then((result: SessionsListDTO) => {
       setSessionData(result[match.params.id]);
       setIsLoaded(true);
+      console.log(result)
     });
   }, [match.params.id]);
 
@@ -49,20 +52,16 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
           <IonTitle>Loading...</IonTitle>
         ) : (
           <IonCard>
+            
+            {sessionData?.image && (
+                  <IonImg src={IMAGE_BASE_URL + sessionData.image}></IonImg>
+            )}
             <IonCardHeader>
-              <IonTitle>
-                <div className="ion-text-wrap">{sessionData?.title}</div>
-              </IonTitle>
+              <IonCardTitle>{sessionData?.title}</IonCardTitle>
+            <IonCardSubtitle>{sessionData?.tags && sessionData.tags[0]}</IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent>
-              {!!sessionData?.image && (
-                <IonImg src={IMAGE_BASE_URL + sessionData.image}></IonImg>
-              )}
-              {/* <IonText>{sessionData?.description}</IonText>
-              {!!sessionData?.speakers && 
-              <div>{sessionData.speakers.map(speaker => {
-                
-              })}</div>} */}
+              {sessionData?.description}
             </IonCardContent>
           </IonCard>
         )}
