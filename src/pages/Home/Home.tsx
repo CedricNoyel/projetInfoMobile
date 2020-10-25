@@ -10,13 +10,18 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { ROUTES } from "../../constants/routes";
+import { DevFestData } from "../../shared/utils/DevFestData";
 
-// import ExploreContainer from "../components/ExploreContainer";
 const logoUrl: string = "assets/images/imt_atlantique_logo.png";
 const Home: React.FC = () => {
+  useEffect(() => {
+    DevFestData.getSessionsList();
+    DevFestData.getSpeakersList();
+  });
+
   return (
     <IonPage>
       <Header title="Accueil" />
@@ -30,7 +35,6 @@ const Home: React.FC = () => {
         <IonThumbnail className="logo">
           <IonImg src={logoUrl} />
         </IonThumbnail>
-        {/* <ExploreContainer name="Tab 2 page" /> */}
         <div className={"container"}>
           <strong>Conférences</strong>
           <p>du 23/10/2018 au 27/10/2018</p>
