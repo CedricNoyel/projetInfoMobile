@@ -1,29 +1,31 @@
 import "./Notes.css";
 
-import {
-  IonButton,
-  IonContent,
-  IonHeader,
-  IonMenuButton,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/react";
-import React from "react";
-import ExploreContainer from "../../components/ExploreContainer";
+import { IonButton, IonContent, IonPage, IonTextarea } from "@ionic/react";
+import React, { useState } from "react";
+
 import { Header } from "../../components/Header";
 
-const Notes: React.FC = () => {
+interface NotesProps {
+  sesssionId: number | undefined;
+  sessionTitle: string | undefined;
+}
+
+const Notes: React.FC<NotesProps> = (props: NotesProps) => {
+  const [text, setText] = useState<string>();
+
   return (
     <IonPage>
-      <Header title="Notes" />
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 3</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer name="Tab 3 page" />
+      <Header title="Mes notes" />
+      <IonContent>
+        <div>{props.sessionTitle}</div>
+        <IonTextarea
+          rows={10}
+          cols={20}
+          placeholder="Entrez vos notes ici..."
+          value={text}
+          onIonChange={(e) => setText(e.detail.value!)}
+        />
+        <IonButton color="dark">Sauvegarder</IonButton>
       </IonContent>
     </IonPage>
   );

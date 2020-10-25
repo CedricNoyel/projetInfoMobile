@@ -1,5 +1,6 @@
 import {
   IonBackButton,
+  IonButton,
   IonButtons,
   IonCard,
   IonCardContent,
@@ -11,9 +12,13 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 import { RouteComponentProps } from "react-router";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
+import Notes from "../Notes/Notes";
 
 const IMAGE_BASE_URL = "https://devfest2018.gdgnantes.com/";
 
@@ -64,6 +69,12 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
               <div>{sessionData.speakers.map(speaker => {
                 
               })}</div>} */}
+
+              <IonButton color="dark">
+                <Link to={ROUTES.NOTES} query={{ sessionTitle: "test" }}>
+                  Ajouter des notes
+                </Link>
+              </IonButton>
             </IonCardContent>
           </IonCard>
         )}
