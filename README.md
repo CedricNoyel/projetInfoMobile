@@ -57,7 +57,7 @@ npm run serve
 
 ```
 npx cap sync
-npx cap run android
+npx cap open android
 ```
 
 # Membres du groupe

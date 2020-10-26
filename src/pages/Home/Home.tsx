@@ -20,18 +20,12 @@ const Home: React.FC = () => {
   useEffect(() => {
     DevFestData.getSessionsList();
     DevFestData.getSpeakersList();
-  });
+  }, []);
 
   return (
     <IonPage>
       <Header title="Accueil" />
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Accueil</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-
         <IonThumbnail className="logo">
           <IonImg src={logoUrl} />
         </IonThumbnail>

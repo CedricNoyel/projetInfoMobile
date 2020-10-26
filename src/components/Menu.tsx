@@ -13,8 +13,6 @@ import React, { useState } from "react";
 import { ROUTES } from "../constants/routes";
 import { phonePortrait, people, calendar } from "ionicons/icons";
 
-import "./Menu.css";
-
 export const Menu = () => {
   return (
     <IonMenu contentId="main">
@@ -25,9 +23,7 @@ export const Menu = () => {
       </IonHeader>
       <IonContent>
         <IonList>
-          <IonItem
-            routerLink={ROUTES.SPEAKERS}
-          >
+          <IonItem routerLink={ROUTES.SPEAKERS}>
             <IonIcon icon={people} slot="start" />
             <IonLabel>Présentateurs</IonLabel>
           </IonItem>
