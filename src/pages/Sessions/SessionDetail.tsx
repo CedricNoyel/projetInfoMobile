@@ -60,7 +60,7 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
       setIsLoaded(true);
     });
 
-    DevFestData.getSessionsList().then((result: SessionsListDTO) => {});
+    // DevFestData.getSessionsList().then((result: SessionsListDTO) => {});
   }, [match.params.id]);
 
   return (
@@ -134,6 +134,10 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
                   </IonCol>
                 </IonRow>
               </IonGrid>
+
+              <IonButton color="dark" routerLink={`/note/${sessionData?.id}`}>
+                Mes notes
+              </IonButton>
             </IonCardContent>
           </IonCard>
         )}
