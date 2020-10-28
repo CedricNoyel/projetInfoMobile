@@ -14,14 +14,19 @@ import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
+import { StorageService } from "../../shared/utils/StorageService";
 import "./Speaker.css";
 
 const SpeakersListPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [speakersList, setSpeakersList] = useState<Speaker[]>([]);
 
+  const getStorageSessionList = async () => {
+    return await StorageService.getObject("speakers");
+  };
+
   useEffect(() => {
-    DevFestData.getSpeakersList().then((result: SpeakersListDTO) => {
+    getStorageSessionList().then((result) => {
       setSpeakersList(Object.values(result));
       setIsLoaded(true);
     });

@@ -27,6 +27,7 @@ import { ROUTES } from "../../constants/routes";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
+import { StorageService } from "../../shared/utils/StorageService";
 import "./SessionDetail.css";
 
 interface SessionPageProps
@@ -41,8 +42,8 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
 
   useEffect(() => {
     const dataPromises: [Promise<SessionsListDTO>, Promise<SpeakersListDTO>] = [
-      DevFestData.getSessionsList(),
-      DevFestData.getSpeakersList(),
+      StorageService.getObject("sessions"),
+      StorageService.getObject("speakers"),
     ];
 
     Promise.all(dataPromises).then(([sessionsDTO, speakersDTO]) => {

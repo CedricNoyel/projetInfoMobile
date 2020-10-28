@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.getcapacitor.devfest;
 
 import android.os.Bundle;
 
