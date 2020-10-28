@@ -1,5 +1,5 @@
 {
-  "appId": "com.imt.devfest.conferences",
+  "appId": "com.getcapacitor.devfest",
   "appName": "DevFest Conferences",
   "bundledWebRuntime": true,
   "npmClient": "npm",

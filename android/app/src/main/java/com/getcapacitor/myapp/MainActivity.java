@@ -1,4 +1,4 @@
-package com.imt.my.app;
+package com.getcapacitor.myapp;
 
 import android.os.Bundle;
 
