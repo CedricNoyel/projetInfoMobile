@@ -23,7 +23,7 @@ Avancement: ![70%](https://progress-bar.dev/70)
 - [x] Mise en cache des données
 - [ ] Page agenda
 - [ ] Page mes notes
-- [ ] Ajouter/editer une note
+- [x] Ajouter/editer une note (page et routing correcte mais non fonctionnel)
 - [ ] Prendre une photo depuis mes notes
 - [ ] Ajouter un speaker aux contacts
 - [ ] Page agenda

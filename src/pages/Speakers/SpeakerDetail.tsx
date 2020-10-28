@@ -60,7 +60,9 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
       setSessions(speakerSessions);
 
       setIsLoaded(true);
-    });
+    }, []);
+
+    // DevFestData.getSpeakersList().then((result: SpeakersListDTO) => {});
   }, [match.params.id]);
 
   return (

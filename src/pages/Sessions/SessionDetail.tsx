@@ -135,6 +135,10 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
                   </IonCol>
                 </IonRow>
               </IonGrid>
+
+              <IonButton color="dark" routerLink={`/note/${sessionData?.id}`}>
+                Mes notes
+              </IonButton>
             </IonCardContent>
           </IonCard>
         )}
