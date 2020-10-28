@@ -20,7 +20,7 @@ Avancement: ![70%](https://progress-bar.dev/70)
 - [x] Page d'accueil
 - [x] Page téléphone
 - [x] PWA
-- [ ] Mise en cache des données hors ligne
+- [x] Mise en cache des données
 - [ ] Page agenda
 - [ ] Page mes notes
 - [ ] Ajouter/editer une note
@@ -57,7 +57,7 @@ npm run serve
 
 ```
 npx cap sync
-npx cap run android
+npx cap open android
 ```
 
 # Membres du groupe

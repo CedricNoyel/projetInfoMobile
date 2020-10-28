@@ -1,7 +1,7 @@
 {
-  "appId": "com.imt.my.app",
-  "appName": "My App",
-  "bundledWebRuntime": false,
+  "appId": "com.getcapacitor.devfest",
+  "appName": "DevFest Conferences",
+  "bundledWebRuntime": true,
   "npmClient": "npm",
   "webDir": "build",
   "linuxAndroidStudioPath": "/home/rouph/android-studio/bin/studio.sh",

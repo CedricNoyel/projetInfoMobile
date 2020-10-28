@@ -12,13 +12,18 @@ import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
 import { DevFestData } from "../../shared/utils/DevFestData";
+import { StorageService } from "../../shared/utils/StorageService";
 
 const SessionsListPage: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [sessionsList, setSessionsList] = useState<Session[]>([]);
 
+  const getStorageSessionList = async () => {
+    return await StorageService.getObject("sessions");
+  };
+
   useEffect(() => {
-    DevFestData.getSessionsList().then((result: SessionsListDTO) => {
+    getStorageSessionList().then((result) => {
       setSessionsList(Object.values(result));
       setIsLoaded(true);
     });
