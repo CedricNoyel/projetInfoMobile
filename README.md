@@ -31,3 +31,5 @@ npx cap run android
 - Cédric NOYEL
 - Jordan GENEVE
 - Raphael HASCOUET
+
+
