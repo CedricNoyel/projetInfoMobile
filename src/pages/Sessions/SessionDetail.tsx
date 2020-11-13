@@ -16,7 +16,7 @@ import {
   IonItem,
   IonPage,
   IonRow,
-  IonThumbnail,
+  IonAvatar,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -27,6 +27,7 @@ import { ROUTES } from "../../constants/routes";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
+import { StorageService } from "../../shared/utils/StorageService";
 import "./SessionDetail.css";
 
 interface SessionPageProps
@@ -41,8 +42,8 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
 
   useEffect(() => {
     const dataPromises: [Promise<SessionsListDTO>, Promise<SpeakersListDTO>] = [
-      DevFestData.getSessionsList(),
-      DevFestData.getSpeakersList(),
+      StorageService.getObject("sessions"),
+      StorageService.getObject("speakers"),
     ];
 
     Promise.all(dataPromises).then(([sessionsDTO, speakersDTO]) => {
@@ -60,7 +61,7 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
       setIsLoaded(true);
     });
 
-    DevFestData.getSessionsList().then((result: SessionsListDTO) => {});
+    // DevFestData.getSessionsList().then((result: SessionsListDTO) => {});
   }, [match.params.id]);
 
   return (
@@ -114,8 +115,9 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
                         <IonItem
                           key={speaker.id}
                           routerLink={`/speaker/${speaker.id}`}
+                          lines="none"
                         >
-                          <IonThumbnail className="speakerImg">
+                          <IonAvatar className="speakerImg">
                             {!!speaker.photoUrl ? (
                               <img src={IMAGE_BASE_URL + speaker.photoUrl} />
                             ) : (
@@ -125,7 +127,7 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
                                 />
                               )
                             )}
-                          </IonThumbnail>
+                          </IonAvatar>
                           <p>{speaker.name}</p>
                         </IonItem>
                       ))}
@@ -133,6 +135,10 @@ const SessionDetailPage: React.FC<SessionPageProps> = ({ match }) => {
                   </IonCol>
                 </IonRow>
               </IonGrid>
+
+              <IonButton color="dark" routerLink={`/note/${sessionData?.id}`}>
+                Mes notes
+              </IonButton>
             </IonCardContent>
           </IonCard>
         )}

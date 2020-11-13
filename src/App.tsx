@@ -54,6 +54,7 @@ import SessionsListPage from "./pages/Sessions/SessionsListPage";
 import SessionDetailPage from "./pages/Sessions/SessionDetail";
 import SpeakersListPage from "./pages/Speakers/SpeakersListPage";
 import SpeakerDetailPage from "./pages/Speakers/SpeakerDetail";
+import NoteDetailPage from "./pages/Notes/NoteDetail";
 
 /* Optional CSS utils that can be commented out */
 /* Theme variables */
@@ -65,6 +66,7 @@ const App: React.FC = () => (
         <IonRouterOutlet id="main">
           <Route path={ROUTES.HOME} component={Home} />
           <Route path={ROUTES.NOTES} component={Notes} />
+          <Route path={ROUTES.NOTE} component={NoteDetailPage} />
           <Route path={ROUTES.SPEAKERS} component={SpeakersListPage} exact />
           <Route path={ROUTES.SPEAKER} component={SpeakerDetailPage} exact />
           <Route path={ROUTES.SESSIONS} component={SessionsListPage} exact />

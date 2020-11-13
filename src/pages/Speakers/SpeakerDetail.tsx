@@ -8,7 +8,6 @@ import {
   IonContent,
   IonHeader,
   IonIcon,
-  IonImg,
   IonItem,
   IonCardTitle,
   IonPage,
@@ -26,6 +25,7 @@ import { ROUTES } from "../../constants/routes";
 import { Session, SessionsListDTO } from "../../shared/models/Session";
 import { Speaker, SpeakersListDTO } from "../../shared/models/Speaker";
 import { DevFestData, IMAGE_BASE_URL } from "../../shared/utils/DevFestData";
+import { StorageService } from "../../shared/utils/StorageService";
 import "./Speaker.css";
 import "./SpeakerDetail.css";
 
@@ -41,8 +41,8 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
 
   useEffect(() => {
     const dataPromises: [Promise<SpeakersListDTO>, Promise<SessionsListDTO>] = [
-      DevFestData.getSpeakersList(),
-      DevFestData.getSessionsList(),
+      StorageService.getObject("speakers"),
+      StorageService.getObject("sessions"),
     ];
 
     Promise.all(dataPromises).then(([speakersDTO, sessionsDTO]) => {
@@ -60,9 +60,9 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
       setSessions(speakerSessions);
 
       setIsLoaded(true);
-    });
+    }, []);
 
-    DevFestData.getSpeakersList().then((result: SpeakersListDTO) => {});
+    // DevFestData.getSpeakersList().then((result: SpeakersListDTO) => {});
   }, [match.params.id]);
 
   return (
@@ -96,7 +96,7 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
                 {speakerData?.name}
               </IonCardTitle>
               <IonCardSubtitle className={"center-text"}>
-                {speakerData?.country}
+                {"Pays: " + speakerData?.country}
               </IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent>
@@ -113,7 +113,11 @@ const SpeakerDetailPage: React.FC<SpeakerPageProps> = ({ match }) => {
                     <IonTitle className={"center-text"}>Conférences :</IonTitle>
                     <div style={{ marginTop: "6px" }}>
                       {sessions?.map((session) => (
-                        <IonItem key={session.id}>
+                        <IonItem
+                          key={session.id}
+                          lines="none"
+                          routerLink={`/session/${session.id}`}
+                        >
                           <p>{session.title}</p>
                         </IonItem>
                       ))}

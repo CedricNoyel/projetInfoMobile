@@ -1,7 +1,32 @@
-# Projet dev movile
+# Projet développement mobile
 
-- Visualisation des conf de la dev fest
-- Prise de notes lors des conf
+On utilise l'API mise à disposition par la DevFest
+On souhaite avoir une application mobile permetttant de visualiser les différentes sessions présentées lors de l'évènement et connaitre les présentateurs.
+
+Une fonctionnalité de prise de notes et d'ajout de photos est aussi présente.
+
+Ce projet est réalisé dans le cadre d'un projet scolaire dispensé par Rossi ODDET, intervenant à IMT Atlantique.
+
+# TODOS
+
+Avancement: ![70%](https://progress-bar.dev/70)
+
+- [x] Initialisation du projet
+- [x] Installation Capacitor
+- [x] Liste des sessions
+- [x] Détail d'une session
+- [x] Liste des speakers
+- [x] Détail d'un speaker
+- [x] Page d'accueil
+- [x] Page téléphone
+- [x] PWA
+- [x] Mise en cache des données
+- [ ] Page agenda
+- [ ] Page mes notes
+- [x] Ajouter/editer une note (page et routing correcte mais non fonctionnel)
+- [ ] Prendre une photo depuis mes notes
+- [ ] Ajouter un speaker aux contacts
+- [ ] Page agenda
 
 # Commandes
 
@@ -10,23 +35,32 @@
 Se positionner à la racine du projet
 
 ```
-npm start
+npm install
 ```
 
-## Lancer le serveur web
+## Lancer le serveur web en http
 
 ```
 ionic serve
+```
+
+## Lancer le serveur web en https
+
+On utilise le module npm `https-localhost`
+
+```
+npm run build
+npm run serve
 ```
 
 ## Lancer avec l'émulateur android studio
 
 ```
 npx cap sync
-npx cap run android
+npx cap open android
 ```
 
-# Groupe
+# Membres du groupe
 
 - Cédric NOYEL
 - Jordan GENEVE
